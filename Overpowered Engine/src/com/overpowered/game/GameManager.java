@@ -6,16 +6,20 @@ import com.overpowered.engine.AbstractGame;
 import com.overpowered.engine.GameContainer;
 import com.overpowered.engine.Renderer;
 import com.overpowered.engine.audio.SoundClip;
+import com.overpowered.engine.gfx.Image;
 import com.overpowered.engine.gfx.ImageTile;
 
 public class GameManager extends AbstractGame
 {
-	private ImageTile image;
+	private Image image;
+	private Image image2;
 	private SoundClip clip;
 	
 	public GameManager()
 	{
-		image = new ImageTile("/Untitled.png", 16, 16);
+		image = new Image("/test.png");
+		image2 = new Image("/test2.png");
+		image2.setAlpha(true);
 		clip = new SoundClip("/audio/untitled.wav");
 		clip.setVolume(-20f);
 	}
@@ -38,8 +42,8 @@ public class GameManager extends AbstractGame
 	@Override
 	public void render(GameContainer gc, Renderer r)
 	{
-		r.drawImageTile(image, gc.getInput().getMouseX() - 8, gc.getInput().getMouseY() - 16, (int)temp, 0);
-		
+		r.drawImage(image, 10, 10);
+		r.drawImage(image2, gc.getInput().getMouseX(), gc.getInput().getMouseY());
 	}
 
 	public static void main(String[] args)

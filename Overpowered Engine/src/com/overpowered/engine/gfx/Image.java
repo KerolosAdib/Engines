@@ -9,6 +9,7 @@ public class Image
 {
 	private int w, h;
 	private int[] p;
+	private boolean alpha = false;
 	
 	public Image(String path)
 	{
@@ -57,6 +58,16 @@ public class Image
 	public void setP(int[] p)
 	{
 		this.p = p;
+	}
+
+	public boolean isAlpha()
+	{
+		return alpha;
+	}
+
+	public void setAlpha(boolean alpha)
+	{
+		this.alpha = alpha;
 	}
 	
 }

@@ -12,13 +12,13 @@ import com.overpowered.engine.gfx.ImageTile;
 public class GameManager extends AbstractGame
 {
 	private Image image;
-	private Image image2;
+	private ImageTile image2;
 	private SoundClip clip;
 	
 	public GameManager()
 	{
 		image = new Image("/test.png");
-		image2 = new Image("/test2.png");
+		image2 = new ImageTile("/test2.png", 16, 16);
 		image2.setAlpha(true);
 		clip = new SoundClip("/audio/untitled.wav");
 		clip.setVolume(-20f);
@@ -42,7 +42,13 @@ public class GameManager extends AbstractGame
 	@Override
 	public void render(GameContainer gc, Renderer r)
 	{
-		r.drawImage(image, 10, 10);
+		for (int x = 0; x < image.getW(); x++)
+		{
+			for (int y = 0; y < image.getH(); y++)
+			{
+				r.setLightMap(x, y, image.getP()[x + y * image.getW()]);
+			}
+		}
 		r.drawImage(image2, gc.getInput().getMouseX(), gc.getInput().getMouseY());
 	}
 

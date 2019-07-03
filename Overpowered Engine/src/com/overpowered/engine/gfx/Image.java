@@ -29,6 +29,13 @@ public class Image
 		p = image.getRGB(0,  0, w, h, null,  0,  w);
 		image.flush();
 	}
+	
+	public Image(int[] p, int w, int h)
+	{
+		this.p = p;
+		this.w = w;
+		this.h = h;
+	}
 
 	public int getW()
 	{
